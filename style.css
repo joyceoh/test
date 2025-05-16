@@ -1,6 +1,7 @@
 section {
   color:#bb24b2;
-  border: solid 3rem black;
+  border: dotted .5rem black;
+  padding: 2rem;
 }
 
 button {
