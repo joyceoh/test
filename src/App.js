@@ -56,18 +56,21 @@ function App() {
         <nav className="main-nav">
           <ul>
             <li>
-              <Link to="/">Widget Test</Link>
+              <Link to="/test/widget">Widget Test</Link>
             </li>
             <li>
-              <Link to="/accordion">Accordion Test</Link>
+              <Link to="/test/accordion">Accordion Test</Link>
+            </li>
+            <li>
+                <button>RC Help</button>
             </li>
           </ul>
         </nav>
 
         <div className="page-content">
           <Routes>
-            <Route path="/" element={<WidgetTest />} />
-            <Route path="/accordion" element={<AccordionTest />} />
+            <Route path="/test/widget" element={<WidgetTest />} />
+            <Route path="/test/accordion" element={<AccordionTest />} />
           </Routes>
         </div>
       </div>
