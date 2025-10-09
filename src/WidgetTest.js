@@ -1,5 +1,5 @@
 // App.js - Complete React Grid Layout Test Application
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import GridLayout from 'react-grid-layout';
 // import 'react-grid-layout/css/styles.css';
 // import 'react-grid-layout/css/resizable.css';
@@ -82,13 +82,13 @@ function App() {
     console.log('Resize Stop:', newItem);
   };
 
-    function pendoActivate(apiKey){
+  function pendoActivate(apiKey){
     (function(p,e,n,d,o){var v,w,x,y,z;o=p[d]=p[d]||{};o._q=o._q||[];
     v=['initialize','identify','updateOptions','pageLoad','track'];for(w=0,x=v.length;w<x;++w)(function(m){
         o[m]=o[m]||function(){o._q[m===v[0]?'unshift':'push']([m].concat([].slice.call(arguments,0)));};})(v[w]);
         y=e.createElement(n);y.async=!0;y.src='https://cdn.pendo-dev.pendo-dev.com/agent/static/'+apiKey+'/pendo.js';
         z=e.getElementsByTagName(n)[0];z.parentNode.insertBefore(y,z);
-        
+
         // Wait for Pendo to load, then initialize
         y.onload = function() {
             // This function creates visitors and accounts in Pendo
@@ -120,15 +120,17 @@ function App() {
             });
         };
     })(window,document,'script','pendo');
-}
+  }
 
-    const handleClick = () => pendoActivate('b1baff48-0a11-41a1-867e-960ad4b8bafd');
+  // Run Pendo activation when component mounts
+  useEffect(() => {
+    pendoActivate('b1baff48-0a11-41a1-867e-960ad4b8bafd');
+  }, []); // Empty dependency array means this runs once on mount
 
 
   return (
     <div className="app">
       <header className="controls">
-        <button type="button" onClick={handleClick}>Pendo</button> 
         <h1>React Grid Layout Test Application</h1>
         
         <div className="control-panel">
