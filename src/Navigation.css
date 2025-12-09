@@ -2,6 +2,17 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.app-container[mode="light"] {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.app-container[mode="dark"] {
+  background-color: #1a1a1a;
+  color: #ffffff;
 }
 
 .main-nav {
@@ -44,4 +55,19 @@
 .page-content {
   flex: 1;
   overflow: auto;
+}
+
+.main-nav button {
+  padding: 15px 25px;
+  background-color: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+  font-size: 14px;
+}
+
+.main-nav button:hover {
+  background-color: #3a3f4b;
 }

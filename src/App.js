@@ -5,7 +5,12 @@ import AccordionTest from './AccordionTest';
 import './Navigation.css';
 
 function App() {
-    
+  const [mode, setMode] = useState('light');
+
+  const toggleMode = () => {
+    setMode(prevMode => prevMode === 'light' ? 'dark' : 'light');
+  };
+
   function pendoActivate(apiKey){
     (function(p,e,n,d,o){var v,w,x,y,z;o=p[d]=p[d]||{};o._q=o._q||[];
     v=['initialize','identify','updateOptions','pageLoad','track'];for(w=0,x=v.length;w<x;++w)(function(m){
@@ -52,7 +57,7 @@ function App() {
   }, []); // Empty dependency array means this runs once on mount
   return (
     <Router>
-      <div className="app-container">
+      <div className="app-container" mode={mode}>
         <nav className="main-nav">
           <ul>
             <li>
@@ -64,12 +69,17 @@ function App() {
             <li>
                 <button>RC Help</button>
             </li>
+            <li>
+                <button onClick={toggleMode}>
+                  {mode === 'light' ? '🌙 Dark' : '☀️ Light'} Mode
+                </button>
+            </li>
           </ul>
         </nav>
 
         <div className="page-content">
           <Routes>
-            <Route path="/test/widget" element={<WidgetTest />} />
+            <Route path="/test" element={<WidgetTest />} />
             <Route path="/test/accordion" element={<AccordionTest />} />
           </Routes>
         </div>
